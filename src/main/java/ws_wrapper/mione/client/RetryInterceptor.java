@@ -1,4 +1,4 @@
-package ws_wrapper.mione.builder;
+package ws_wrapper.mione.client;
 
 import java.io.IOException;
 import okhttp3.Interceptor;

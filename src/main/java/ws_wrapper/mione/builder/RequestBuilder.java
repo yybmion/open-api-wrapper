@@ -43,12 +43,12 @@ public class RequestBuilder {
     public PublicDataRequest build() {
         return new PublicDataRequest() {
             @Override
-            public String getEndPoint() {
+            public String getEndpoint() {
                 return endpoint;
             }
 
             @Override
-            public Map<String, String> getParameter() {
+            public Map<String, String> getParameters() {
                 return Collections.unmodifiableMap(parameters);
             }
         };
