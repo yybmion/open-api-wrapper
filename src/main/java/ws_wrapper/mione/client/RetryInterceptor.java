@@ -29,7 +29,11 @@ public class RetryInterceptor implements Interceptor {
                     return response;
                 }
 
-                // 응답이 실패인 경우 body를 닫아주어야 리소스 누수 방지
+                // 특정 에러 코드의 경우 재시도하지 않음
+                if (response.code() == 400 || response.code() == 404) {
+                    return response;
+                }
+
                 if (response.body() != null) {
                     response.close();
                 }
@@ -46,7 +50,10 @@ public class RetryInterceptor implements Interceptor {
             }
         }
 
-        throw new PublicDataException("Failed after " + maxRetries + " retries", lastException);
+        throw new PublicDataException(
+                "Failed after " + maxRetries + " retries",
+                PublicDataException.SERVICE_TIMEOUT
+        );
     }
 
     // 지수 백오프로 재시도 대기 시간 계산
