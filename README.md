@@ -27,7 +27,7 @@ dependencyResolutionManagement {
 ### 2. 의존성 추가
 ```groovy
 dependencies {
-    implementation 'com.github.yybmion:open-api-wrapper:1.0.1'
+    implementation 'com.github.yybmion:open-api-wrapper:v1.0.2'
 }
 ```
 
