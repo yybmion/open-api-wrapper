@@ -61,13 +61,41 @@ public class PublicDataClient {
 
         try {
             Response response = executeRequest(url);
-            T result = parseResponse(response, responseType);
+            if (!response.isSuccessful()) {
+                String errorMessage = response.message();
+                String errorCode;
 
-            // 응답을 캐시에 저장
+                switch (response.code()) {
+                    case 400:
+                        errorCode = PublicDataException.INVALID_REQUEST_PARAMETER_ERROR;
+                        break;
+                    case 404:
+                        errorCode = PublicDataException.NODATA_ERROR;
+                        break;
+                    case 500:
+                        errorCode = PublicDataException.APPLICATION_ERROR;
+                        break;
+                    case 503:
+                        errorCode = PublicDataException.SERVICE_TIMEOUT;
+                        break;
+                    default:
+                        errorCode = PublicDataException.HTTP_ERROR;
+                }
+                throw new PublicDataException(errorMessage, errorCode);
+            }
+
+            T result = parseResponse(response, responseType);
             cache.put(cacheKey, result);
             return result;
+        } catch (IOException e) {
+            throw new PublicDataException("Network error: " + e.getMessage(),
+                    PublicDataException.HTTP_ERROR);
         } catch (Exception e) {
-            throw new PublicDataException("Request failed: " + e.getMessage(), e);
+            if (e instanceof PublicDataException) {
+                throw e;
+            }
+            throw new PublicDataException("Unexpected error: " + e.getMessage(),
+                    PublicDataException.APPLICATION_ERROR);
         }
     }
 
@@ -107,12 +135,30 @@ public class PublicDataClient {
     private <T> T parseResponse(Response response, Class<T> responseType) throws IOException {
         try (ResponseBody body = response.body()) {
             if (body == null) {
-                throw new PublicDataException("Empty response body");
+                throw new PublicDataException(
+                        "Empty response body from server",
+                        PublicDataException.HTTP_ERROR  // HTTP_ERROR로 처리
+                );
             }
 
             String responseBody = body.string();
             logger.debug("Response body: {}", responseBody);
-            return objectMapper.readValue(responseBody, responseType);
+
+            try {
+                return objectMapper.readValue(responseBody, responseType);
+            } catch (Exception e) {
+                // JSON 파싱 실패는 APPLICATION_ERROR로 처리
+                throw new PublicDataException(
+                        "Failed to parse response: " + e.getMessage(),
+                        PublicDataException.APPLICATION_ERROR
+                );
+            }
+        } catch (IOException e) {
+            // IO 관련 에러는 DB_ERROR 또는 HTTP_ERROR로 처리
+            throw new PublicDataException(
+                    "Failed to read response: " + e.getMessage(),
+                    PublicDataException.HTTP_ERROR
+            );
         }
     }
 

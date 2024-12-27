@@ -9,9 +9,14 @@ public class RequestBuilder {
     private final String endpoint;
     private final Map<String, String> parameters;
 
-    public RequestBuilder(String endpoint, Map<String, String> parameters) {
+    public RequestBuilder(String endpoint) {
         this.endpoint = endpoint;
         this.parameters = new HashMap<>();
+    }
+
+    public RequestBuilder(String endpoint, Map<String, String> parameters) {
+        this.endpoint = endpoint;
+        this.parameters = new HashMap<>(parameters);
     }
 
     /**
