@@ -1,13 +1,13 @@
-package ws_wrapper.mione;
+package com.github.yybmion.wrapper;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MioneApplication {
+public class OpenApiWrapperApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MioneApplication.class, args);
+		SpringApplication.run(OpenApiWrapperApplication.class, args);
 	}
 
 }

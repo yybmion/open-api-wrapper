@@ -1,7 +1,7 @@
-package ws_wrapper.mione.WeatherTest;
+package com.github.yybmion.wrapper.mione.WeatherTest;
 
 import java.util.List;
-import ws_wrapper.mione.model.PublicDataResponse;
+import com.github.yybmion.wrapper.model.PublicDataResponse;
 
 public class TestWeatherResponse implements PublicDataResponse<List<TestWeatherData>> {
     private Response response;  // 최상위 response 객체 추가

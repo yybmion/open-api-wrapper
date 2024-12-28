@@ -1,16 +1,16 @@
-package ws_wrapper.mione.WeatherTest;
+package com.github.yybmion.wrapper.mione.WeatherTest;
 
 import static com.jayway.jsonpath.internal.path.PathCompiler.fail;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import com.github.yybmion.wrapper.client.PublicDataClient;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ws_wrapper.mione.builder.RequestBuilder;
-import ws_wrapper.mione.client.PublicDataClient;
+import com.github.yybmion.wrapper.builder.RequestBuilder;
 
 public class WeatherClientTest {
 

@@ -1,4 +1,4 @@
-package ws_wrapper.mione.client;
+package com.github.yybmion.wrapper.client;
 
 import java.io.IOException;
 import okhttp3.Interceptor;
@@ -6,7 +6,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ws_wrapper.mione.exception.PublicDataException;
+import com.github.yybmion.wrapper.exception.PublicDataException;
 
 public class RetryInterceptor implements Interceptor {
     private final int maxRetries;

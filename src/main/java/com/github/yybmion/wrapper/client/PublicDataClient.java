@@ -1,4 +1,4 @@
-package ws_wrapper.mione.client;
+package com.github.yybmion.wrapper.client;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.cache.Cache;
@@ -15,8 +15,8 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ws_wrapper.mione.exception.PublicDataException;
-import ws_wrapper.mione.model.PublicDataRequest;
+import com.github.yybmion.wrapper.exception.PublicDataException;
+import com.github.yybmion.wrapper.model.PublicDataRequest;
 
 public class PublicDataClient {
     private final String serviceKey;

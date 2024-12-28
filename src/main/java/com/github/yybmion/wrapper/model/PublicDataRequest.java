@@ -1,4 +1,4 @@
-package ws_wrapper.mione.model;
+package com.github.yybmion.wrapper.model;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package ws_wrapper.mione.WeatherTest;
+package com.github.yybmion.wrapper.mione.WeatherTest;
 
 public class TestWeatherData {
     private String baseDate;

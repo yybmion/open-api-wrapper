@@ -1,4 +1,4 @@
-package ws_wrapper.mione.exception;
+package com.github.yybmion.wrapper.exception;
 
 public class PublicDataException extends RuntimeException {
     // 공공데이터 포털 표준 에러 코드
