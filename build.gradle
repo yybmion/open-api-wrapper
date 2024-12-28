@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.github.yybmion'
-version = '1.0.0'
+version = 'v1.0.3'
 
 java {
 	toolchain {

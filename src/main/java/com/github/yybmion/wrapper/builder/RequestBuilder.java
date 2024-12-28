@@ -1,9 +1,9 @@
-package ws_wrapper.mione.builder;
+package com.github.yybmion.wrapper.builder;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import ws_wrapper.mione.model.PublicDataRequest;
+import com.github.yybmion.wrapper.model.PublicDataRequest;
 
 public class RequestBuilder {
     private final String endpoint;
