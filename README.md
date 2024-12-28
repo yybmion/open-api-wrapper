@@ -14,7 +14,7 @@
 
 ### 1. JitPack 저장소 추가
 ```groovy
-// build.gradle
+// settings.gradle
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -27,7 +27,7 @@ dependencyResolutionManagement {
 ### 2. 의존성 추가
 ```groovy
 dependencies {
-    implementation 'com.github.yybmion:open-api-wrapper:v1.0.2'
+    implementation 'com.github.yybmion:open-api-wrapper:1.0.8'
 }
 ```
 
