@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.github.yybmion'
-version = 'v1.0.3'
+version = '1.0.4'
 
 java {
 	toolchain {
@@ -22,6 +22,9 @@ java {
 publishing {
 	publications {
 		maven(MavenPublication) {
+			groupId = 'com.github.yybmion'
+			artifactId = 'open-api-wrapper'
+			version = '1.0.4'
 			from components.java
 		}
 	}
