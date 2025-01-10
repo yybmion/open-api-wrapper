@@ -1,6 +1,6 @@
 # Public Data Portal API Wrapper
 
-공공데이터 포털 API를 쉽게 사용할 수 있는 자바 라이브러리입니다.
+[공공데이터 포털 API](https://www.data.go.kr/index.do)를 쉽게 사용할 수 있는 자바 라이브러리입니다.
 
 [![](https://jitpack.io/v/yybmion/open-api-wrapper.svg)](https://jitpack.io/#yybmion/open-api-wrapper)
 
@@ -26,6 +26,7 @@ dependencyResolutionManagement {
 
 ### 2. 의존성 추가
 ```groovy
+// build.gradle
 dependencies {
     implementation 'com.github.yybmion:open-api-wrapper:1.0.8'
 }
