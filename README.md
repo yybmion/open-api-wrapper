@@ -38,14 +38,17 @@ dependencies {
 ```java
 // 클라이언트 생성
 PublicDataClient client = new PublicDataClient.Builder()
-    .serviceKey("your-service-key")
+    .serviceKey("your-service-key")        // 필수: 공공데이터 포털 서비스 키
+    .connectTimeout(10)                    // 선택: 연결 타임아웃 (초)
+    .maxRetries(3)                         // 선택: 최대 재시도 횟수
+    .cacheExpiration(10)                   // 선택: 캐시 만료 시간 (분)
     .build();
 
 // 요청 생성
 RequestBuilder builder = new RequestBuilder("http://apis.data.go.kr/your-api-endpoint")
-    .addParameter("pageNo", "1")
-    .addParameter("numOfRows", "10")
-    .addParameter("dataType", "JSON");
+    .addParameter("param1", "value1")
+    .addParameter("param2", "value2")
+    .build();
 
 // API 호출
 YourResponse response = client.request(builder.build(), YourResponse.class);
@@ -74,12 +77,6 @@ future.thenAccept(response -> {
 ## 시스템 요구사항
 - Java 8 이상
 - 공공데이터 포털 API 서비스 인증키
-
-## 의존성
-- OkHttp3
-- Jackson
-- Google Guava
-- SLF4J
 
 ## 라이센스
 이 프로젝트는 MIT 라이센스 하에 있습니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
